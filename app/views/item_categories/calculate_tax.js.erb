@@ -1,0 +1,1 @@
+$('#results').html("<p>Items: <%= j @items.pluck(:name).join(',') %></p><p>Sub Total: <%= (@sub_total) %></p><p>Tax:<%= @tax %></p>")

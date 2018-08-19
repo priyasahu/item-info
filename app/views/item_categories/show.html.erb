@@ -1,0 +1,25 @@
+<div class="item">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item_category.name %>
+</p> 
+
+<p>
+  <strong>Items:</strong>
+  <%= form_tag("/item_categories/calculate_tax", method: 'post', remote: true ) do %>
+    <% @item_category.items.each do |item| %>
+      <tr>
+        <input type="checkbox" name="item[]" value="<%= item.id %>">
+        <td><%= item.name %></td>
+      </tr>
+    <% end %>
+    <%= submit_tag("Calculate") %>
+  <% end %>
+</p>
+<div id="results"></div> 
+<%= link_to 'Edit', edit_item_category_path(@item_category) %> |
+<%= link_to 'Back', item_categories_path %> |
+<%= link_to 'Add Item', new_item_path %>
+</div>
